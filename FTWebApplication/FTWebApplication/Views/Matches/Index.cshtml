@@ -1,0 +1,71 @@
+﻿@model IEnumerable<FTWebApplication.Match>
+
+@{
+    ViewData["Title"] = "Матчі";
+}
+
+<h1>Матчі команди @ViewBag.TeamsName</h1>
+
+<p>
+    @Html.ActionLink("Додати новий матч", "Create", new{teamId = @ViewBag.TeamsId})
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CostTicket)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateMatch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BallFirst)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BallSecond)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdStadiumNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTeamAtNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTeamHtNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostTicket)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateMatch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BallFirst)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BallSecond)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdStadiumNavigation.IdStadium)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTeamAtNavigation.NameTeam)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTeamHtNavigation.NameTeam)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdMatch">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdMatch">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdMatch">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

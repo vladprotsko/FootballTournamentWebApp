@@ -1,0 +1,47 @@
+﻿@model IEnumerable<FTWebApplication.staff>
+
+@{
+    ViewData["Title"] = "Працівники клубу";
+}
+
+<h1>Працівники в клубі @ViewBag.TeamsName</h1>
+
+<p>
+     @Html.ActionLink("Додати нового працівника", "Create", new{teamId = @ViewBag.TeamsId})
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FioStaff)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RoleStaff)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTeamFkkNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FioStaff)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RoleStaff)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTeamFkkNavigation.NameTeam)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdStaff">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdStaff">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdStaff">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

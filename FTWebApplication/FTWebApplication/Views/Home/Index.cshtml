@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Лабораторна роботи ІСтаТП 2021. Футбольний турнір. Процько Владислав К-26";
+}
+<h1>Лабораторна роботи ІСтаТП 2021.</h1>
+<h2>Футбольний турнір.</h2>
+<h3>Процько Владислав К-26.</h3>
+@if(User.Identity.IsAuthenticated)
+{
+<p>@User.Identity.Name</p>
+
+<form method="post" asp-controller="Account" asp-action="Logout">
+    <input type="submit" value="Вихід" />
+</form>
+}
+else
+{
+<a asp-controller="Account" asp-action="Login">Вхід</a>
+<a asp-controller="Account" asp-action="Register">Реєстрація</a>
+}
+

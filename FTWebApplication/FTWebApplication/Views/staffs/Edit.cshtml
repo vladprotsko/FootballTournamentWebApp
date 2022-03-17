@@ -1,0 +1,44 @@
+﻿@model FTWebApplication.staff
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>staff</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdStaff" />
+            <div class="form-group">
+                <label asp-for="IdTeamFkk" class="control-label"></label>
+                <select asp-for="IdTeamFkk" class="form-control" asp-items="ViewBag.IdTeamFkk"></select>
+                <span asp-validation-for="IdTeamFkk" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FioStaff" class="control-label"></label>
+                <input asp-for="FioStaff" class="form-control" />
+                <span asp-validation-for="FioStaff" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RoleStaff" class="control-label"></label>
+                <input asp-for="RoleStaff" class="form-control" />
+                <span asp-validation-for="RoleStaff" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
